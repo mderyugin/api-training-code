@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    restAssuredVersion = '5.5.0'
+    testNgVersion = '7.7.1'
+}
+
+dependencies {
+    implementation 'com.github.javafaker:javafaker:1.0.2'
+    testImplementation 'com.codeborne:selenide:7.5.0'
+    implementation 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.16.1'
+    testImplementation 'io.rest-assured:rest-assured:5.5.0'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'commons-io:commons-io:2.15.1'
+    testImplementation "org.slf4j:slf4j-simple:2.0.9"
+
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    implementation 'org.aeonbits.owner:owner:1.0.12'
+
+    implementation 'ch.qos.logback:logback-classic:1.2.11'
+    implementation 'ch.qos.logback:logback-core:1.2.11'
+    implementation 'org.slf4j:slf4j-api:1.7.36'
+
+    implementation 'io.rest-assured:rest-assured:5.1.1'
+}
+
+test {
+    useJUnitPlatform()
+}
