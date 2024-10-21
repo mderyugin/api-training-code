@@ -7,7 +7,6 @@ import io.restassured.specification.RequestSpecification;
 public  class ApiService {
 
     protected RequestSpecification setup() {
-        System.out.println();
         return RestAssured
                 .given().contentType(ContentType.JSON).log().all();
 

@@ -1,2 +1,4 @@
-package com.socks.api;public interface ProjectConfig {
+package com.socks.api;
+
+public interface ProjectConfig {
 }
