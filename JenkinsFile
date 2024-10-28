@@ -1,0 +1,10 @@
+node {
+    stage("checkout repo") {
+        git branch: 'master',
+        credentialsId: '19e187d0-e3db-497f-a531-20dc0b7d3c65'
+        url: 'https://github.com/mderyugin/api-training-code.git'
+    }
+    stage("build") {
+        sh "./gradlew clean api-test:assemble"
+    }
+}
