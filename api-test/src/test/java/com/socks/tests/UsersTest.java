@@ -38,7 +38,6 @@ public class UsersTest {
         userApiService.registerUser(user)
                 .shouldHave(Conditions.statusCode(200))
                 .shouldHave(Conditions.bodyField("id", not(isEmptyOrNullString())));
-
     }
 
 }

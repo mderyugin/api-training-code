@@ -1,7 +1,11 @@
 package com.socks.ui;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 
@@ -13,9 +17,9 @@ public class MainPage {
     }
 
     public void loginAs(String email, String password) {
-        $("#login > a").click();
-        $("#username-modal").setValue(email);
-        $("#password-modal").setValue(password);
-        $("#login-modal p button").click();
+        $("a[href='/login']").click();
+        Selenide.sleep(2000);
+
+
     }
 }
