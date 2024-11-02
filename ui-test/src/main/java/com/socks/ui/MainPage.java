@@ -19,4 +19,5 @@ public class MainPage {
     public void loginAs(String email, String password) {
         $("a[href='/login']").click();
         //Selenide.sleep(2000);
+    }
 }

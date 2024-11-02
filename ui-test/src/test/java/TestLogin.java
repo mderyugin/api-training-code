@@ -1,3 +1,5 @@
+package com.socks.ui.test;
+
 import com.codeborne.selenide.Selenide;
 import com.socks.api.conditions.Conditions;
 import com.socks.api.payloads.UserPayload;
