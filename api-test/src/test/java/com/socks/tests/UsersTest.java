@@ -36,8 +36,7 @@ public class UsersTest {
                 .password("KcLMmxkJMjBD1");
 
         userApiService.registerUser(user)
-                .shouldHave(Conditions.statusCode(403))
+                .shouldHave(Conditions.statusCode(200))
                 .shouldHave(Conditions.bodyField("id", not(isEmptyOrNullString())));
     }
-
 }
