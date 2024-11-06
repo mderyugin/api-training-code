@@ -39,6 +39,11 @@ dependencies {
     implementation 'io.rest-assured:rest-assured:5.1.1'
 
     implementation 'org.seleniumhq.selenium:selenium-java:4.25.0'
+
+    testImplementation 'io.qameta.allure:allure-java-commons:2.20.1'
+    implementation 'io.qameta.allure:allure-testng:2.29.0'
+    testImplementation 'io.qameta.allure:allure-junit5:2.29.0'
+    implementation 'io.qameta.allure:allure-selenide:2.29.0'
 }
 
 test {

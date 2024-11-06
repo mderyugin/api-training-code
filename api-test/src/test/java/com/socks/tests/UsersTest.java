@@ -39,5 +39,4 @@ public class UsersTest {
                 .shouldHave(Conditions.statusCode(200))
                 .shouldHave(Conditions.bodyField("id", not(isEmptyOrNullString())));
     }
-
 }

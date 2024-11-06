@@ -19,7 +19,9 @@ public class MainPage {
     public void loginAs(String email, String password) {
         $("a[href='/login']").click();
         Selenide.sleep(2000);
-
-
+        $("input#email").setValue(email);
+        $("input#password").setValue(password);
+        Selenide.sleep(2000);
+        $("button[type='submit']").click();
     }
 }
