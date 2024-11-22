@@ -10,12 +10,12 @@ import lombok.experimental.Accessors;
 @Accessors(fluent = true)
 public class PaymentPayload {
         @JsonProperty("movieId")
-        private String moveId;
+        private int movieId;
 
         @JsonProperty("amount")
-        private String amount;
+        private int amount;
 
-        @JsonProperty("cardPayload")
+        @JsonProperty("card")
         private CardPayload cardPayload = new CardPayload();
 
 }

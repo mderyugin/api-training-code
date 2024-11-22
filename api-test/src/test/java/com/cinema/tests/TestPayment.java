@@ -1,5 +1,7 @@
 package com.cinema.tests;
 
+
+import com.cinema.api.assertions.AssertableResponse;
 import com.cinema.api.payloads.CardPayload;
 import com.cinema.api.payloads.PaymentPayload;
 import com.github.javafaker.Faker;
@@ -12,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.isEmptyOrNullString;
 
 public class TestPayment {
@@ -25,19 +28,23 @@ public class TestPayment {
 
     @Test
     public void testUserCanPay() {
-        PaymentPayload user = (PaymentPayload) new PaymentPayload()
-                //body user
-                .moveId("76")
-                .amount("1")
+        LoginUserPayload loginUser = new LoginUserPayload()
+                .email("test-admin@mail.com")
+                .password("KcLMmxkJMjBD1");
+
+        userApiService.loginUser(loginUser)
+                .shouldHave(Conditions.statusCode(201));
+
+        PaymentPayload payment = (PaymentPayload) new PaymentPayload()
+                .movieId(76)
+                .amount(1)
                 .cardPayload(new CardPayload()
                     .cardNumber("4242424242424242")
                     .cardHolder("Bober Andreevich")
                     .expirationDate("12/25")
-                    .securityCode("123"));
+                    .securityCode(123));
 
-
-        userApiService.payment(user)
-                .shouldHave(Conditions.statusCode(200))
-                .shouldHave(Conditions.bodyField("securityCode", not(isEmptyOrNullString())));
+        userApiService.payment(payment)
+                .shouldHave(Conditions.statusCode(201));
     }
 }

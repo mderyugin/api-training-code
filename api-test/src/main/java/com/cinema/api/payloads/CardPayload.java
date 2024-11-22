@@ -22,6 +22,5 @@ public class CardPayload {
     private String expirationDate;
 
     @JsonProperty("securityCode")
-    private String securityCode;
-
+    private int securityCode;
 }
