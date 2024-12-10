@@ -32,8 +32,8 @@ public class TestLogin {
 
     @Test
     public void testCanLoginUser() {
-       String randomEmail = faker.internet().emailAddress();
-       String randomPassword = faker.internet().password();
+//       String randomEmail = faker.internet().emailAddress();
+//       String randomPassword = faker.internet().password();
 
         LoginUserPayload loginUser = new LoginUserPayload()
                 .email("test-admin@mail.com")
