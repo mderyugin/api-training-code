@@ -3,7 +3,7 @@ package com.cinema.ui;
 import org.aeonbits.owner.Config;
 
 @Config.Sources("classpath:payment.properties")
-public interface PaymentConfig extends Config {
+public interface IPaymentConfig extends Config {
     @Key("card.number")
     String cardNumber();
 

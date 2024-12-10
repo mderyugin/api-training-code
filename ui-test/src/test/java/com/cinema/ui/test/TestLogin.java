@@ -1,40 +1,32 @@
 package com.cinema.ui.test;
 
-import com.cinema.api.conditions.Conditions;
+import com.cinema.ui.LoginPage;
+import com.pages.api.conditions.Conditions;
 import com.cinema.ui.MainPage;
-import com.codeborne.selenide.Selenide;
-import com.cinema.api.payloads.LoginUserPayload;
-import com.cinema.api.services.UserApiService;
+import com.pages.api.payloads.LoginUserPayload;
+import com.pages.api.services.UserApiService;
 //import com.socks.ui.LoggedUserPage;
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
+
 
 import static com.codeborne.selenide.Selenide.*;
 
 public class TestLogin extends BaseUiTest {
 
+    private final Faker faker = new Faker();
     private final UserApiService userApiService = new UserApiService();
-
-    private MainPage mainPage;
     
     @Test
     public void userCanLoginWithValidCredentials() {
-        open("https://dev-cinescope.store/");
-        //given
-        LoginUserPayload loginUserPayload = (LoginUserPayload) new LoginUserPayload()
-                .email("test-admin@mail.com")
-                .password("KcLMmxkJMjBD1");
 
-        userApiService.loginUser(loginUserPayload)
-                .shouldHave(Conditions.statusCode(200));
+//        String randomEmail = faker.internet().emailAddress();
+//        String randomPassword = faker.internet().password();
 
-        // when
-        MainPage.open()
-                .loginAs(loginUserPayload.email(), loginUserPayload.password());
-        Selenide.sleep(2000);
+        MainPage mainPage = MainPage.open();
+        LoginPage loginPage = mainPage.goToLoginPage();
 
-//        LoggedUserPage loggedUserPage = at(LoggedUserPage.class);
-//        loggedUserPage.logoutBtn().shouldHave(text("Выйти"));
-
+        loginPage.login("test-admin@mail.com", "KcLMmxkJMjBD1");
     }
 
 }

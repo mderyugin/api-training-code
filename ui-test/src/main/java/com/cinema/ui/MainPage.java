@@ -11,12 +11,8 @@ public class MainPage {
         Selenide.open("https://dev-cinescope.store");
         return new MainPage();
     }
-
-    public void loginAs(String email, String password) {
+    public LoginPage goToLoginPage() {
         $("a[href='/login']").click();
-        $("input#email").setValue(email);
-        $("input#password").setValue(password);
-        $("button[type='submit']").click();
-        Selenide.sleep(2000);
+        return new LoginPage();
     }
 }

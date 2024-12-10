@@ -1,4 +1,4 @@
-package com.cinema.api.conditions;
+package com.pages.api.conditions;
 
 import lombok.experimental.UtilityClass;
 import org.hamcrest.Matcher;

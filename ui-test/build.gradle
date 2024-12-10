@@ -11,7 +11,6 @@ repositories {
 
 ext {
     restAssuredVersion = '5.5.0'
-    testNgVersion = '7.7.1'
 }
 
 dependencies {
@@ -28,7 +27,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation 'commons-io:commons-io:2.15.1'
     testImplementation "org.slf4j:slf4j-simple:2.0.9"
-
+    testImplementation 'org.assertj:assertj-core:3.26.3'
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 
@@ -43,7 +42,6 @@ dependencies {
     implementation 'org.seleniumhq.selenium:selenium-java:4.25.0'
 
     testImplementation 'io.qameta.allure:allure-java-commons:2.20.1'
-    implementation 'io.qameta.allure:allure-testng:2.29.0'
     testImplementation 'io.qameta.allure:allure-junit5:2.29.0'
     implementation 'io.qameta.allure:allure-selenide:2.29.0'
 }

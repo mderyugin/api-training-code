@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class MoviesPayPage {
-    PaymentConfig config = ConfigFactory.create(PaymentConfig.class);
+    IPaymentConfig config = ConfigFactory.create(IPaymentConfig.class);
     private final String priceButton = "//a[contains(@href, 'payment?movieId')]";
 
     public MoviesPayPage buyTicket() {

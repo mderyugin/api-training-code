@@ -1,6 +1,6 @@
-package com.cinema.api.assertions;
+package com.pages.api.assertions;
 
-import com.cinema.api.conditions.Condition;
+import com.pages.api.conditions.ICondition;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 public class AssertableResponse {
     private final Response response;
 
-    public AssertableResponse shouldHave(Condition condition){
+    public AssertableResponse shouldHave(ICondition condition){
         condition.check(response);
         return this;
     }
@@ -18,5 +18,8 @@ public class AssertableResponse {
     }
     public Headers headers(){
         return response.getHeaders();
+    }
+    public Response getResponse() {
+        return response;
     }
 }

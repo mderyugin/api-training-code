@@ -1,4 +1,4 @@
-package com.cinema.api.services;
+package com.pages.api.services;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;

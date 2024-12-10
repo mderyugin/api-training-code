@@ -1,11 +1,11 @@
-package com.cinema.api.conditions;
+package com.pages.api.conditions;
 
 import io.restassured.response.Response;
 import lombok.RequiredArgsConstructor;
 import org.hamcrest.Matcher;
 
 @RequiredArgsConstructor
-public class BodyFieldCondition implements Condition {
+public class BodyFieldCondition implements ICondition {
 
     private final String jsonPath;
     private final Matcher matcher;

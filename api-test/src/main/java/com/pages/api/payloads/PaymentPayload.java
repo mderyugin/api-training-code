@@ -1,4 +1,4 @@
-package com.cinema.api.payloads;
+package com.pages.api.payloads;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

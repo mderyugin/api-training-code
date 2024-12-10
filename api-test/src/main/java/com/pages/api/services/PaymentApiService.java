@@ -1,4 +1,4 @@
-package com.cinema.api.services;
+package com.pages.api.services;
 
 public class PaymentApiService {
 
