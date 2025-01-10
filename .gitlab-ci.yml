@@ -11,6 +11,20 @@ workflow:
 
       build_app:
         stage: build
-        image: /mderyugin/api-training-code
+        image: mderyugin/api-training-code
         script:
           - ./gradlew clean build
+
+      unit_test:
+        stage: integration_tests
+        image: mderyugin/api-training-code
+        script:
+          - ./gradlew clean test
+        after_script:
+          - '[ ! -d public] && mkdir public'
+          - cp -R $CI_PROJECT_DIR/build/report/. public
+        artifacts:
+            when: always
+            expire_in: 10 days
+            path:
+              - public
