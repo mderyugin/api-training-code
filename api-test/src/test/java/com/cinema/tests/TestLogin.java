@@ -3,6 +3,7 @@ package com.cinema.tests;
 
 import com.pages.api.IProjectConfig;
 import com.github.javafaker.Faker;
+import com.pages.api.assertions.AssertableResponse;
 import com.pages.api.conditions.Conditions;
 import com.pages.api.payloads.LoginUserPayload;
 import com.pages.api.responses.LoginResponse;
@@ -11,6 +12,8 @@ import io.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -30,21 +33,32 @@ public class TestLogin {
         }
     }
 
-    @Test
-    public void testCanLoginUser() {
-//       String randomEmail = faker.internet().emailAddress();
-//       String randomPassword = faker.internet().password();
-
+    @ParameterizedTest
+    @CsvSource({
+            "test-admin@mail.com, KcLMmxkJMjBD1, true",
+            "invalid-email@mail.com, KcLMmxkJMjBD1, false",
+            "test-admin@mail.com, wrongPassword, false",
+            "invalid-email@mail.com, wrongPassword, false"
+    })
+    public void testLoginUser(String email, String password, boolean isSuccess) {
         LoginUserPayload loginUser = new LoginUserPayload()
-                .email("test-admin@mail.com")
-                .password("KcLMmxkJMjBD1");
-        LoginResponse loginResponse = userApiService.loginUser(loginUser)
-                .shouldHave(Conditions.statusCode(200))
-                .asPojo(LoginResponse.class);
+                .email(email)
+                .password(password);
 
-        assertThat(loginResponse.getAccessToken())
-                .as("Access token должен быть не пустым")
-                .isNotNull()
-                .isNotEmpty();
+        AssertableResponse response = userApiService.loginUser(loginUser);
+
+        if (isSuccess) {
+            LoginResponse loginResponse = response
+                    .shouldHave(Conditions.statusCode(200))
+                    .asPojo(LoginResponse.class);
+
+            assertThat(loginResponse.getAccessToken())
+                    .as("Access token должен быть не пустым")
+                    .isNotNull()
+                    .isNotEmpty();
+        } else {
+            response.shouldHave(Conditions.statusCode(401));
+        }
     }
+
 }

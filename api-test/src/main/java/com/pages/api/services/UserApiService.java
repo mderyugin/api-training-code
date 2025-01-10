@@ -35,7 +35,7 @@ public class UserApiService extends ApiService {
 
     public AssertableResponse loginUser(LoginUserPayload user) {
         Response response = setup()
-                .baseUri("https://auth.dev-cinescope.store")
+                .baseUri(baseURI)
                 .header("Content-Type", "application/json")
                 .body(user)
                 .when()

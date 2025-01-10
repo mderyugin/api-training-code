@@ -1,0 +1,16 @@
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+
+      stages:
+        - build
+        - integration_tests
+        - metrics
+        - system_tests
+        - pages
+
+      build_app:
+        stage: build
+        image: /mderyugin/api-training-code
+        script:
+          - ./gradlew clean build
