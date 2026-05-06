@@ -44,12 +44,10 @@ public class UserApiService extends ApiService {
         System.out.println("Response status code: " + response.statusCode());
         System.out.println("Response body: " + response.body().asString());
 
-        LoginResponse loginResponse = response.then().extract().as(LoginResponse.class);
-
-        if (loginResponse.getAccessToken() == null) {
-            throw new IllegalStateException("Login response does not contain 'accessToken'");
+        if (response.statusCode() == 200) {
+            LoginResponse loginResponse = response.then().extract().as(LoginResponse.class);
+            this.authToken = loginResponse.getAccessToken();
         }
-        this.authToken = loginResponse.getAccessToken();
 
         return new AssertableResponse(response);
     }

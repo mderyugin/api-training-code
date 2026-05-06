@@ -38,7 +38,7 @@ public class TestPayment {
         logger.info("Начинаю тестовую оплату с пользователем {}", loginUser.email());
 
         AssertableResponse loginResponse = userApiService.loginUser(loginUser);
-        loginResponse.shouldHave(Conditions.statusCode(201));
+        loginResponse.shouldHave(Conditions.statusCode(200));
 
         String accesToken = loginResponse.asPojo(Map.class).get("accessToken").toString();
         assertThat(accesToken)
